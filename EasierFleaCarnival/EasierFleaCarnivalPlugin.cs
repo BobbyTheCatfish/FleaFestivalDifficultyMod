@@ -7,7 +7,7 @@ using UnityEngine;
 using UnityEngine.Diagnostics;
 using UnityEngine.SceneManagement;
 
-namespace EasierFleaCarnival
+namespace FleaFestivalDifficulty
 {
 
     class Score
@@ -17,8 +17,8 @@ namespace EasierFleaCarnival
         public int dodge = 0;
     }
     // TODO - adjust the plugin guid as needed
-    [BepInAutoPlugin(id: "io.github.bobbythecatfish.easierfleacarnival")]
-    public partial class EasierFleaCarnivalPlugin : BaseUnityPlugin
+    [BepInAutoPlugin(id: "io.github.bobbythecatfish.FleaFestivalDifficulty")]
+    public partial class FleaFestivalDifficultyPlugin : BaseUnityPlugin
     {
         
 
@@ -29,12 +29,12 @@ namespace EasierFleaCarnival
             // Put your initialization logic here
             Logger.LogInfo($"Plugin {Name} ({Id}) has loaded!");
 
-            Harmony.CreateAndPatchAll(typeof(EasierFleaCarnivalPlugin));
+            Harmony.CreateAndPatchAll(typeof(FleaFestivalDifficultyPlugin));
             constPatch = new ConstPatch();
             SceneManager.sceneLoaded += OnSceneChange;
             Log.SetLogger(Logger);
 
-            EasierFleaCarnival.Config.Init(Config);
+            FleaFestivalDifficulty.Config.Init(Config);
             Values.Init();
         }
 
