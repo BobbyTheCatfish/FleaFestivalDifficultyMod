@@ -12,6 +12,8 @@ namespace FleaFestivalDifficulty
 {
     // TODO - adjust the plugin guid as needed
     [BepInAutoPlugin(id: "io.github.bobbythecatfish.FleaFestivalDifficulty")]
+    [BepInDependency("org.silksong-modding.fsmutil")]
+    [BepInDependency("org.silksong-modding.unityhelper")]
     public partial class FFDPlugin : BaseUnityPlugin
     {
 
