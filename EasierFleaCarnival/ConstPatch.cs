@@ -33,7 +33,7 @@ namespace FleaFestivalDifficulty
                 {
                     case "FLEA_FESTIVAL_CHAMP_JUGGLE":
                         __result = Scores.Juggle.Score(Scores.Juggle.Champ);
-                        Log.LogInfo($"champ juggle: {__result}");
+                        //Log.LogInfo($"champ juggle: {__result}");
                         break;
                     case "FLEA_FESTIVAL_SETH_JUGGLE":
                         __result = Scores.Juggle.Score(Scores.Juggle.Seth);

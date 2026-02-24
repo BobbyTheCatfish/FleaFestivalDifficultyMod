@@ -19,12 +19,12 @@ namespace FleaFestivalDifficulty.Speed
             Controller = scene.FindGameObject($"Caravan_States/Flea Festival/Flea Game - {gameName}");
             if (Controller == null)
             {
-                Log.LogError("Couldn't find game controller");
+                Log.LogError("Couldn't find minigame controller");
                 return;
             }
             else
             {
-                Log.LogWarning("Found game controller");
+                Log.LogDebug("Found minigame controller");
                 SetSpeed();
             }
         }

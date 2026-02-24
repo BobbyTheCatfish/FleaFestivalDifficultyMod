@@ -37,6 +37,7 @@ namespace FleaFestivalDifficulty
             Scores.Init();
         }
 
+#if DEBUG
         private void Update()
         {
             if (Input.GetKeyDown(KeyCode.Alpha0))
@@ -53,6 +54,7 @@ namespace FleaFestivalDifficulty
             }
 
         }
+#endif
 
         private void OnSceneChange(Scene scene, LoadSceneMode mode)
         {

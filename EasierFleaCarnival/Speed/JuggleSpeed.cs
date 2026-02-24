@@ -72,49 +72,4 @@ namespace FleaFestivalDifficulty.Speed
             SetAction(fsm, "Varga Setup", 15, true);
         }
     }
-    internal static class JuggleBkp
-    {
-        static GameObject controller;
-        internal static float JuggleSpeed => Config.JuggleSpeedMult?.Value ?? 1;
-
-        public static void Init(Scene scene)
-        {
-            controller = scene.FindGameObject("Caravan_States/Flea Festival/Flea Game - Juggling");
-            if (controller == null)
-            {
-                Log.LogError("Couldn't find game controller");
-                return;
-            }
-            else
-            {
-                Log.LogWarning("Found game controller");
-                SetJugglerSpeed();
-            }
-        }
-
-        public static void SetJugglerSpeed(object sender, EventArgs e)
-        {
-            SetJugglerSpeed();
-        }
-
-        public static void SetJugglerSpeed()
-        {
-        }
-
-        static void SetSpecialFleaSpeed(int index)
-        {
-            var flea = controller.transform.GetChild(index);
-            var fsm = flea.GetComponentInChildren<PlayMakerFSM>(true);
-
-            fsm.GetFloatVariable("Bounce Time").value *= JuggleSpeed;
-            SetAction(fsm, "Varga Setup", 15);
-        }
-
-        static void SetAction(PlayMakerFSM fsm, string state, int actionIndex)
-        {
-            var action = fsm.GetAction<SetFloatValue>(state, actionIndex);
-            if (action == null) return;
-            action.floatValue = JuggleSpeed * action.floatValue.Value;
-        }
-    }
 }
