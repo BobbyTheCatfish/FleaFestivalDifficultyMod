@@ -4,18 +4,31 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace EasierFleaCarnival
+namespace FleaFestivalDifficulty
 {
     internal static class Config
     {
-        public static ConfigEntry<float> JuggleMult;
-        public static ConfigEntry<float> DodgeMult;
-        public static ConfigEntry<float> BounceMult;
+        public static ConfigEntry<float> JuggleScoreMult;
+        public static ConfigEntry<float> DodgeScoreMult;
+        public static ConfigEntry<float> BounceScoreMult;
+
+        public static ConfigEntry<float> JuggleSpeedMult;
+        public static ConfigEntry<float> DodgeSpeedMult;
+        public static ConfigEntry<float> BounceSpeedMult;
         public static void Init(ConfigFile config)
         {
-            JuggleMult = config.Bind("Score Multipliers", "Juggle", 1f);
-            DodgeMult = config.Bind("Score Multipliers", "Dodge", 1f);
-            BounceMult = config.Bind("Score Multipliers", "Bounce", 1f);
+            JuggleScoreMult = config.Bind("Score Multipliers", "Juggle", 1f);
+            DodgeScoreMult = config.Bind("Score Multipliers", "Dodge", 1f);
+            BounceScoreMult = config.Bind("Score Multipliers", "Bounce", 1f);
+
+            JuggleSpeedMult = config.Bind("Game Speed Multipliers", "Juggle", 1f, "Higher number = faster");
+            JuggleSpeedMult.SettingChanged += FFDPlugin.JuggleSpeed.SetSpeed;
+
+            DodgeSpeedMult = config.Bind("Game Speed Multipliers", "Dodge", 1f, "Higher number = faster");
+            DodgeSpeedMult.SettingChanged += FFDPlugin.DodgeSpeed.SetSpeed;
+
+            BounceSpeedMult = config.Bind("Game Speed Multipliers", "Bounce", 1f, "Higher number = faster");
+            BounceSpeedMult.SettingChanged += FFDPlugin.BounceSpeed.SetSpeed;
         }
     }
 

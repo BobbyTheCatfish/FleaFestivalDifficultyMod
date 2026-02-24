@@ -22,7 +22,7 @@
 
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageIcon>icon.png</PackageIcon>
-    <RepositoryUrl>https://github.com/BobbyTheCatfish/EasierFleaCarnival</RepositoryUrl>
+    <RepositoryUrl>https://github.com/BobbyTheCatfish/FleaFestivalDifficulty</RepositoryUrl>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="BepInEx.Analyzers" Version="1.0.8" PrivateAssets="all" />
@@ -31,10 +31,10 @@
     <PackageReference Include="Harmonize" Version="1.0.3" PrivateAssets="all" />
     <PackageReference Include="Hamunii.BepInEx.AutoPlugin" Version="2.0.1" PrivateAssets="all" />
     <PackageReference Include="Microsoft.Unity.Analyzers" Version="1.25.0" PrivateAssets="all" />
-    <PackageReference Include="Silksong.FsmUtil" Version="0.3.13" PrivateAssets="all"/>
-    <PackageReference Include="Silksong.UnityHelper" Version="1.1.1" PrivateAssets="all"/>
+    <PackageReference Include="Silksong.FsmUtil" Version="0.3.13" PrivateAssets="all" />
+    <PackageReference Include="Silksong.UnityHelper" Version="1.1.1" PrivateAssets="all" />
     <PackageReference Include="UnityEngine.Modules" Version="6000.0.50" IncludeAssets="compile" />
-    <PackageReference Include="Silksong.GameLibs" Version="*-*" PrivateAssets="all"/>
+    <PackageReference Include="Silksong.GameLibs" Version="*-*" PrivateAssets="all" />
   </ItemGroup>
 
   <ItemGroup>

@@ -1,5 +1,6 @@
 using BepInEx;
 using BepInEx.Logging;
+using FleaFestivalDifficulty.Speed;
 using HarmonyLib;
 using System;
 using System.Reflection;
@@ -9,18 +10,14 @@ using UnityEngine.SceneManagement;
 
 namespace FleaFestivalDifficulty
 {
-
-    class Score
-    {
-        public int juggle = 0;
-        public int bounce = 0;
-        public int dodge = 0;
-    }
     // TODO - adjust the plugin guid as needed
     [BepInAutoPlugin(id: "io.github.bobbythecatfish.FleaFestivalDifficulty")]
-    public partial class FleaFestivalDifficultyPlugin : BaseUnityPlugin
+    public partial class FFDPlugin : BaseUnityPlugin
     {
-        
+
+        internal static JuggleSpeed JuggleSpeed = new();
+        internal static BounceSpeed BounceSpeed = new();
+        internal static DodgeSpeed DodgeSpeed = new();
 
         static ConstPatch constPatch;
 
@@ -29,13 +26,13 @@ namespace FleaFestivalDifficulty
             // Put your initialization logic here
             Logger.LogInfo($"Plugin {Name} ({Id}) has loaded!");
 
-            Harmony.CreateAndPatchAll(typeof(FleaFestivalDifficultyPlugin));
+            Harmony.CreateAndPatchAll(typeof(FFDPlugin));
             constPatch = new ConstPatch();
             SceneManager.sceneLoaded += OnSceneChange;
             Log.SetLogger(Logger);
 
             FleaFestivalDifficulty.Config.Init(Config);
-            Values.Init();
+            Scores.Init();
         }
 
         private void Update()
@@ -60,7 +57,10 @@ namespace FleaFestivalDifficulty
             if (mode != LoadSceneMode.Additive) return;
             if (scene.name != "Aqueduct_05_festival") return;
 
-            Speed.Init(scene);
+            JuggleSpeed.Init(scene, "Juggling");
+            DodgeSpeed.Init(scene, "Dodging");
+            BounceSpeed.Init(scene, "Bouncing");
+
             Log.LogInfo("Loaded the festival");
         }
 
@@ -68,16 +68,16 @@ namespace FleaFestivalDifficulty
         [HarmonyPrefix]
         static void ScoreboardAwake(ScoreBoardUI __instance)
         {
-            Values.LoadScoreboard(__instance.gameObject);
-            Values.SetScoreboard(__instance.gameObject);
+            Scores.LoadScoreboard(__instance.gameObject);
+            Scores.SetScoreboard(__instance.gameObject);
         }
 
         [HarmonyPatch(typeof(ScoreBoardUI), "Refresh")]
         [HarmonyPrefix]
         static void ScoreboardRefresh(ScoreBoardUI __instance)
         {
-            Values.LoadScoreboard(__instance.gameObject);
-            Values.SetScoreboard(__instance.gameObject);
+            Scores.LoadScoreboard(__instance.gameObject);
+            Scores.SetScoreboard(__instance.gameObject);
         }
     }
 }

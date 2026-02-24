@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Reflection;
 using System.Text;
 
-namespace EasierFleaCarnival
+namespace FleaFestivalDifficulty
 {
     internal class ConstPatch
     {
@@ -32,23 +32,23 @@ namespace EasierFleaCarnival
                 switch (variableName)
                 {
                     case "FLEA_FESTIVAL_CHAMP_JUGGLE":
-                        __result = Values.Juggle.Score(Values.Juggle.Champ);
+                        __result = Scores.Juggle.Score(Scores.Juggle.Champ);
                         Log.LogInfo($"champ juggle: {__result}");
                         break;
                     case "FLEA_FESTIVAL_SETH_JUGGLE":
-                        __result = Values.Juggle.Score(Values.Juggle.Seth);
+                        __result = Scores.Juggle.Score(Scores.Juggle.Seth);
                         break;
                     case "FLEA_FESTIVAL_CHAMP_DODGE":
-                        __result = Values.Dodge.Score(Values.Dodge.Champ);
+                        __result = Scores.Dodge.Score(Scores.Dodge.Champ);
                         break;
                     case "FLEA_FESTIVAL_SETH_DODGE":
-                        __result = Values.Dodge.Score(Values.Dodge.Seth);
+                        __result = Scores.Dodge.Score(Scores.Dodge.Seth);
                         break;
                     case "FLEA_FESTIVAL_CHAMP_BOUNCE":
-                        __result = Values.Bounce.Score(Values.Bounce.Champ);
+                        __result = Scores.Bounce.Score(Scores.Bounce.Champ);
                         break;
                     case "FLEA_FESTIVAL_SETH_BOUNCE":
-                        __result = Values.Bounce.Score(Values.Bounce.Seth);
+                        __result = Scores.Bounce.Score(Scores.Bounce.Seth);
                         break;
                 }
 

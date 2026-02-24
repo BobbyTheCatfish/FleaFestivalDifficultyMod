@@ -5,7 +5,7 @@ using System.Text;
 using TMProOld;
 using UnityEngine;
 
-namespace EasierFleaCarnival
+namespace FleaFestivalDifficulty
 {
     class Game
     {
@@ -92,7 +92,7 @@ namespace EasierFleaCarnival
             text?.text = score.ToString();
         }
     }
-    internal static class Values
+    internal static class Scores
     {
         public static Game Juggle;
         public static Game Dodge;
@@ -103,21 +103,21 @@ namespace EasierFleaCarnival
         public static void Init()
         {
             Juggle = new Game(
-                Config.JuggleMult,
+                Config.JuggleScoreMult,
                 Constants.FLEA_FESTIVAL_SETH_JUGGLE,
                 Constants.FLEA_FESTIVAL_CHAMP_JUGGLE,
                 5
             );
 
             Dodge = new Game(
-                Config.DodgeMult,
+                Config.DodgeScoreMult,
                 Constants.FLEA_FESTIVAL_SETH_DODGE,
                 Constants.FLEA_FESTIVAL_CHAMP_DODGE,
                 7
             );
 
             Bounce = new Game(
-                Config.BounceMult,
+                Config.BounceScoreMult,
                 Constants.FLEA_FESTIVAL_SETH_BOUNCE,
                 Constants.FLEA_FESTIVAL_CHAMP_BOUNCE,
                 9
