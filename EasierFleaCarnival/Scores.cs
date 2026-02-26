@@ -11,20 +11,31 @@ namespace FleaFestivalDifficulty
     {
         public ConfigEntry<float> _multiplier;
         public float Multiplier => _multiplier?.Value ?? 1;
-        public int Seth = 0;
-        public int Champ = 0;
-        public int Grish = 0;
-        public int Vog = 0;
-        public int Moosh = 0;
-        public int Varg = 0;
-        public int Kratt = 0;
+
+        public int Seth => Score(_seth);
+        public int Champ => Score(_champ);
+        public int Grish => Score(_grish);
+        public int Vog => Score(_vog);
+        public int Moosh => Score(_moosh);
+        public int Varg => Score(_varg);
+        public int Kratt => Score(_kratt);
+
+        int _seth;
+        int _champ;
+        int _grish = 0;
+        int _vog = 0;
+        int _moosh = 0;
+        int _varg = 0;
+        int _kratt = 0;
+
+
         int index;
 
         public Game(ConfigEntry<float> mult, int seth, int champ, int index)
         {
             _multiplier = mult;
-            Seth = seth;
-            Champ = champ;
+            _seth = seth;
+            _champ = champ;
             this.index = index;
         }
 
@@ -32,11 +43,11 @@ namespace FleaFestivalDifficulty
         {
             var category = ui.transform.GetChild(2).GetChild(index);
             //Seth = seth;
-            Grish = GetScore(category, "Score Badge Short");
-            Vog = GetScore(category, "Score Badge Hunter");
-            Moosh = GetScore(category, "Score Badge Leader");
-            Varg = GetScore(category, "Score Badge Tall Variant");
-            Kratt = GetScore(category, "Score Badge Lech");
+            _grish = GetScore(category, "Score Badge Short");
+            _vog = GetScore(category, "Score Badge Hunter");
+            _moosh = GetScore(category, "Score Badge Leader");
+            _varg = GetScore(category, "Score Badge Tall Variant");
+            _kratt = GetScore(category, "Score Badge Lech");
             //Champ = champ;
             //Log.LogInfo("Grish:", Grish);
         }
@@ -61,7 +72,7 @@ namespace FleaFestivalDifficulty
             return scoreBadge.score;
         }
 
-        public int Score(int raw)
+        int Score(int raw)
         {
             return (int)(raw * Multiplier);
         }
@@ -82,7 +93,6 @@ namespace FleaFestivalDifficulty
             var badge = GetBadge(root, badgeName);
             if (badge == null) return;
 
-            score = Score(score);
             //Log.LogInfo(score);
 
             var scoreBadge = badge.GetComponent<ScoreBoardUIBadge>();
